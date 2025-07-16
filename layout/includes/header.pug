@@ -1,0 +1,21 @@
+.header_wrap
+    #blog_name
+        a#site-name.blog_title(href=url_for('/')) #[=config.title]
+    button.menus_icon
+        .navicon
+    ul.menus_items
+        each value, label in theme.menu
+            if !Array.isArray(value)
+                li.menus_item
+                    a.site-page(href=url_for(trim(value.split('||')[0])))=' ' + label
+            else
+                li.menus_item
+                    a.site-page=' ' + trim(label.split('||')[0])
+    // Google tag (gtag.js)
+    script(async src="https://www.googletagmanager.com/gtag/js?id=G-7HNFCBCE3S")
+    script.
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-7HNFCBCE3S');
